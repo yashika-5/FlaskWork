@@ -1,0 +1,21 @@
+<!-- EXAM HTML-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if name == 'physics' %}
+    <p>
+        <h1>This is the page for questions of : {{name|capitalize}}</h1>
+    </p>
+    {% elif name == 'chemistry' %}
+    <p>
+        <h1>This is the page for questions of : {{name}}</h1>
+    </p>
+    {% else %}
+    <p>
+        <h1>Page not found for this :{{name}}</h1>
+    </p>
+    {% endif %}
+
+{% endblock %}

@@ -5,7 +5,14 @@
     <title>Welcome to Site!!</title>
 </head>
 <body>
-    <h1>Here is a pic of puppy !</h1>
-<img src="/static/puppy_pic.jpeg">
+    {% if user_logged_in %}
+        <p>Welcome, You are logged in.</p>
+        <h1>Here is a pic of puppy !</h1>
+        <img src="/static/puppy_pic.jpeg">
+    {% else %}
+        <p>Please log in!</p>
+    {% endif %}
+
+
 </body>
 </html>

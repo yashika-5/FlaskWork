@@ -4,7 +4,8 @@ app = Flask(__name__)
 
 @app.route('/') # 127.0.0.1:5000
 def index():
-    return render_template('basic.html')
+    user_logged_in = True
+    return render_template('basic.html', user_logged_in=user_logged_in)
 
 
 @app.route('/info')  # 127.0.0.1:5000/info
@@ -19,8 +20,12 @@ def info():
 
 @app.route('/users_data/<name>')
 def user(name):
-    return f"<h1>This is a page for {name.upper()}</h1>"
+    if name == 'john':
+        user_logged_in = True
+    else:
+        user_logged_in = False
+    return render_template('loggedIn.html', name=name, user_logged_in=user_logged_in)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
