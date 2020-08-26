@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template file</title>
+</head>
+<body>
+    <h1>Hello {{my_var}} </h1>
+    <h1>Heyy!! {{letters[:]}}</h1>
+    <h2>My dictionary from python {{ mydictionary }}</h2>
+    <ul>
+        {% for pup in mylist %}
+        <li><b>{{pup}}</b></li>
+         {% endfor %}
+    </ul>
+   {% if 'rufus' in mylist %}
+        <p>Found you Rufus.</p>
+   {% else %}
+        <h1>Hmm.. Rufus is not in this list.</h1>
+    {% endif %}
+</body>
+</html>
