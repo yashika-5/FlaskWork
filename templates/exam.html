@@ -7,10 +7,12 @@
     {% if name == 'physics' %}
     <p>
         <h1>This is the page for questions of : {{name|capitalize}}</h1>
+        <a href="{{ url_for('static',filename='exam.jpeg')  }}">START</a>
     </p>
     {% elif name == 'chemistry' %}
     <p>
         <h1>This is the page for questions of : {{name}}</h1>
+        <a href="{{ url_for('static',filename='exam.jpeg')  }}">START</a>
     </p>
     {% else %}
     <p>
