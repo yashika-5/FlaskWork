@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <p>Let see how you performed</p>
+    {% if report %}
+        <p>Your username passed the 3 requirements!!  :)</p>
+    {% else %}
+        {% if not upper %}
+            <p> Upper case letter not available :(</p>
+        {% endif %}
+        {% if not lower %}
+            <p> Lower case letter not available :(</p>
+        {% endif %}
+        {% if not last %}
+            <p> Last character is not a number :(</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
