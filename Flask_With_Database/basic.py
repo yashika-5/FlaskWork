@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask,sessions
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -21,7 +21,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     age = db.Column(db.Integer)
-    dob = db.Column(db.DateTime)
+    dob = db.Column(db.Date)
 
     def __init__(self,name,age,dob):
         self.name = name
