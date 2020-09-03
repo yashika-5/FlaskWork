@@ -2,7 +2,7 @@ from basic import db,User
 from datetime import date
 
 # CREATE
-student1 = User('Charlie',22,date(1999,8,5))
+student1 = User('Charlie',22,date(1999,8,5),'Male')
 db.session.add(student1)
 db.session.commit()
 
