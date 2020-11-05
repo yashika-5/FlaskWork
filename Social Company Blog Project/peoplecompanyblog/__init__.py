@@ -27,3 +27,6 @@ app.register_blueprint(core)
 
 from peoplecompanyblog.error_pages.handlers import error_pages
 app.register_blueprint(error_pages)
+
+from peoplecompanyblog.users.views import users
+app.register_blueprint(users)
