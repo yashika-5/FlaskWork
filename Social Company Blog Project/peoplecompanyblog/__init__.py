@@ -6,6 +6,9 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 
+
+app.config['SECRET_KEY'] = 'mysecret'
+
 ###################################################
 ################## DATABASE SET UP #################
 ####################################################
