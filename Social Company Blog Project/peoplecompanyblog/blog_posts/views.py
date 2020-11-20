@@ -1,9 +1,9 @@
 #blog_posts/views.py
 
-from flask import render_template,url_for,flash,request,Blueprint,redirect
+from flask import render_template,url_for,flash,request,Blueprint,redirect,abort
 from flask_login import current_user,login_required
 from peoplecompanyblog import db
-from peoplecompanyblog.models import Blogpost
+from peoplecompanyblog.models import BlogPost
 from peoplecompanyblog.blog_posts.forms import BlogPostForm
 
 blog_posts = Blueprint('blog_posts',__name__)
@@ -16,7 +16,7 @@ def create_post():
 
     if form.validate_on_submit():
 
-        blog_post = Blogpost(title=form.title.data,
+        blog_post = BlogPost(title=form.title.data,
                              text=form.text.data,
                              user_id=current_user.id)
         db.session.add(blog_post)
@@ -29,14 +29,14 @@ def create_post():
 # blog_post view
 @blog_posts.route('/<int:blog_post_id>')
 def blog_post(blog_post_id):
-    blog_post = Blogpost.query.get_or_404(blog_post_id)
+    blog_post = BlogPost.query.get_or_404(blog_post_id)
     return render_template('blog_post.html', title=blog_post.title, date=blog_post.date, post=blog_post)
 
 # UPDATE
 @blog_posts.route('/<int:blog_post_id>',methods=['GET','POST'])
 def update(blog_post_id):
-    blog_post = Blogpost.query.get_or_404(blog_post_id)
-    if Blogpost.author != current_user:
+    blog_post = BlogPost.query.get_or_404(blog_post_id)
+    if BlogPost.author != current_user:
         abort(403)
 
     form = BlogPostForm()
@@ -60,8 +60,8 @@ def update(blog_post_id):
 @blog_posts.route('/<int:blog_post_id>')
 @login_required
 def delete_post(blog_post_id):
-    blog_post = Blogpost.query.get_or_404(blog_post_id)
-    if Blogpost.author != current_user:
+    blog_post = BlogPost.query.get_or_404(blog_post_id)
+    if BlogPost.author != current_user:
         abort(403)
 
     db.session.delete(blog_post)
